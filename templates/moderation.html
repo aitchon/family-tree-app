@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moderation Queue</title>
+</head>
+<body>
+    <h1>Moderation Queue</h1>
+    {{ range . }}
+    <div>
+        <p>Edit ID: {{ .ID }}</p>
+        <p>Tree ID: {{ .TreeID }}</p>
+        <p>Edit Data: {{ .EditData }}</p>
+        <form method="POST" action="/admin/moderation">
+            <input type="hidden" name="edit_id" value="{{ .ID }}">
+            <button type="submit" name="action" value="approve">Approve</button>
+            <button type="submit" name="action" value="reject">Reject</button>
+        </form>
+    </div>
+    {{ end }}
+</body>
+</html>
